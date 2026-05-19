@@ -7,10 +7,10 @@ if [ "$EUID" -ne 0 ]; then
 fi
 
 # Loopa igenom alla användare
-for user in "$@"; do
-
+for user in "$@"
+do
     # Skapa användaren
-    useradd -m "$user"
+    id "$user" &>/dev/null || useradd -m "$user" 
 
     # Skapa mappar
     mkdir /home/$user/Documents
